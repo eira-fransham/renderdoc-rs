@@ -27,8 +27,8 @@ impl Error {
 impl Display for Error {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self.0 {
-            ErrorKind::Library(_) => write!(f, "Unable to load RenderDoc shared library"),
-            ErrorKind::Symbol(_) => write!(f, "Unable to find `RENDERDOC_GetAPI` symbol"),
+            ErrorKind::Library(e) => write!(f, "Unable to load RenderDoc shared library: {e}"),
+            ErrorKind::Symbol(e) => write!(f, "Unable to find `RENDERDOC_GetAPI` symbol: {e}"),
             ErrorKind::NoCompatibleApi => write!(f, "Library could not provide compatible API"),
             ErrorKind::LaunchReplayUi => write!(f, "Failed to launch replay UI"),
         }
