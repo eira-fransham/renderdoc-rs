@@ -26,7 +26,7 @@ impl Error {
 
 impl Display for Error {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        match self.0 {
+        match &self.0 {
             ErrorKind::Library(e) => write!(f, "Unable to load RenderDoc shared library: {e}"),
             ErrorKind::Symbol(e) => write!(f, "Unable to find `RENDERDOC_GetAPI` symbol: {e}"),
             ErrorKind::NoCompatibleApi => write!(f, "Library could not provide compatible API"),
